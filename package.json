@@ -1,0 +1,33 @@
+{
+    "name": "netsuite-typescript-sdf",
+    "displayName": "NetSuite TypeScript SDF",
+    "description": "NetSuite TypeScript SDF Project Template",
+    "keywords": [
+        "netsuite",
+        "suitescript",
+        "typescript",
+        "sdf"
+    ],
+    "author": {
+        "name": "Matthew Plant",
+        "url": "https://github.com/mattplant"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattplant/netsuite-typescript-sdf"
+    },
+    "version": "1.1.0",
+    "license": "MIT",
+    "devDependencies": {
+        "@hitc/netsuite-types": "^2022.2.3",
+        "@typescript-eslint/eslint-plugin": "^5.35.1",
+        "@typescript-eslint/parser": "^5.35.1",
+        "eslint": "^8.22.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-suitescript": "^1.2.1",
+        "typescript": "^4.8.2"
+    },
+    "scripts": {
+        "lint": "npx eslint . --ext .js --ext .ts"
+    }
+}
