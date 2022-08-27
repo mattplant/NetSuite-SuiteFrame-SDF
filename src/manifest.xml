@@ -3,7 +3,6 @@
   <frameworkversion>1.0</frameworkversion>
   <dependencies>
     <features>
-      <feature required="true">CRM</feature>
       <feature required="true">SERVERSIDESCRIPTING</feature>
     </features>
   </dependencies>

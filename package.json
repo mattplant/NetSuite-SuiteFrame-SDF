@@ -1,12 +1,12 @@
 {
-    "name": "netsuite-typescript-sdf",
-    "displayName": "NetSuite TypeScript SDF",
-    "description": "NetSuite TypeScript SDF Project Template",
+    "name": "netsuite-suiteframe-sdf",
+    "description": "NetSuite SuiteFrame SDF Project Template",
     "keywords": [
         "netsuite",
+        "sdf",
+        "suiteframe",
         "suitescript",
-        "typescript",
-        "sdf"
+        "typescript"
     ],
     "author": {
         "name": "Matthew Plant",
@@ -14,9 +14,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/mattplant/netsuite-typescript-sdf"
+        "url": "https://github.com/mattplant/netsuite-suiteframe-sdf"
     },
-    "version": "1.1.0",
+    "version": "0.7.0",
     "license": "MIT",
     "devDependencies": {
         "@hitc/netsuite-types": "^2022.2.3",
