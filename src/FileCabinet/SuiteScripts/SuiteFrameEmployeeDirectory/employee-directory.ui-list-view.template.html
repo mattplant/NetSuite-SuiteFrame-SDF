@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Employee Directory</title>		
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+		<style type = "text/css">
+			{{css}}
+		</style>				
+	</head>
+	<body>
+	
+		<div class="appWrapper">
+
+			{{table}}
+
+			<p class="appFooter">
+				{{appName}} v{{appVersion}}
+				&bull; Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a>.
+			</p>
+
+		</div>
+
+		<script>	
+		
+			window.jQuery = window.$ = jQuery;	
+		
+			if ( {{enableDatatables}} ) {		
+				$('#{{tableID}}').DataTable( { "pageLength": 15, "lengthMenu": [ 5, 10, 15, 20, 25, 50, 75, 100, 250, 500, 1000 ] } );		
+			}
+		
+		</script>
+
+	</body>
+
+</html>
