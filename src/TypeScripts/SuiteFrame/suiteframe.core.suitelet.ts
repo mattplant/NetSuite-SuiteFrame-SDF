@@ -7,9 +7,7 @@
  * @NScriptName SuiteFrame Core Script
  * @NScriptType Suitelet
  * @NApiVersion 2.1
- */
-
-/*
+ *
  *------------------------------------------------------------------------------------------
  * MIT License
  *------------------------------------------------------------------------------------------
@@ -74,13 +72,19 @@ import url = require('N/url');
 import { DetailView } from './employee-directory.ui-detail-view.module';
 import { ListView } from './employee-directory.ui-list-view.module';
 
-const scriptUrl = url.resolveScript({ scriptId: runtime.getCurrentScript().id, deploymentId: runtime.getCurrentScript().deploymentId, returnExternalUrl: false });
+let scriptUrl = '';
 
 export function onRequest(context: EntryPoints.Suitelet.onRequestContext) {
+	// make the script URL available to the UI modules
+	scriptUrl = url.resolveScript({ scriptId: runtime.getCurrentScript().id, deploymentId: runtime.getCurrentScript().deploymentId, returnExternalUrl: false });
+
 	try {
+		// determine the request type
 		if (context.request.method === 'GET') {
+			// process the GET request
 			getRequestHandle(context);
-		} else { // form submitted
+		} else {
+			// process the POST request
 			postRequestHandle(context);
 		}
 	} catch (e) {
