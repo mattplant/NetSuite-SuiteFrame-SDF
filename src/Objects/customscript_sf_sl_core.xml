@@ -1,0 +1,26 @@
+<suitelet scriptid="customscript_sf_sl_core">
+  <description>The core script of the SuiteFrame TypeScript SDF Project Template leveraging Timothy Dietrich's SuiteFrame framework</description>
+  <isinactive>F</isinactive>
+  <name>SuiteFrame Core Script</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/SuiteFrameEmployeeDirectory/suiteframe.core.suitelet.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_sf_sl_core">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audemployee></audemployee>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole></runasrole>
+      <status>RELEASED</status>
+      <title>SuiteFrame Core Script</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>
