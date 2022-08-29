@@ -1,14 +1,14 @@
-<suitelet scriptid="customscript_idev_sl_sf_core">
-  <description>The core script of the NetSuite-SuiteFrame-SDF project template leveraging Timothy Dietrich's SuiteFrame framework.</description>
+<suitelet scriptid="customscript_idev_sl_sf_emp_core">
+  <description>The core script of the NetSuite SuiteFrame SDF project template leveraging Timothy Dietrich's SuiteFrame framework.</description>
   <isinactive>F</isinactive>
-  <name>SuiteFrame Core Script</name>
+  <name>SuiteFrameEmployee Core</name>
   <notifyadmins>F</notifyadmins>
   <notifyemails></notifyemails>
   <notifyowner>T</notifyowner>
   <notifyuser>F</notifyuser>
-  <scriptfile>[/SuiteScripts/SuiteFrame/suiteframe.core.suitelet.js]</scriptfile>
+  <scriptfile>[/SuiteScripts/SuiteFrameEmployee/suiteframe.core.suitelet.js]</scriptfile>
   <scriptdeployments>
-    <scriptdeployment scriptid="customdeploy_idev_sl_sf_core">
+    <scriptdeployment scriptid="customdeploy_idev_sl_sf_emp_core">
       <allemployees>F</allemployees>
       <allpartners>F</allpartners>
       <allroles>T</allroles>
@@ -20,7 +20,7 @@
       <loglevel>DEBUG</loglevel>
       <runasrole></runasrole>
       <status>RELEASED</status>
-      <title>SuiteFrame Core Script</title>
+      <title>SuiteFrameEmployee Core</title>
     </scriptdeployment>
   </scriptdeployments>
 </suitelet>

@@ -77,8 +77,8 @@ define(["require", "exports", "N/file", "N/log", "N/query"], function (require, 
         }
     }
     exports.Library = Library;
-    Library.appName = '<a href="https://github.com/mattplant/suiteframe-typescript-sdf" target="_blank">SuiteFrame TypeScript SDF Project Template</a>';
-    Library.appVersion = '0.7.0';
+    Library.appName = 'NetSuite SuiteFrame SDF Project Template';
+    Library.appVersion = '0.7.1';
     Library.appBuiltWith = 'Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a> in <a href="https://github.com/mattplant/netsuite-typescript-sdf/" target="_blank">NetSuite TypeScript SDF Project Template</a>.';
     Library.hideNavBar = false;
     Library.enableDatatables = true;

@@ -38,7 +38,7 @@ export class ListView {
 
         html = Library.fileLoad('employee-directory.ui-list-view.template.html');
 
-        let searchRegExp = new RegExp('{{scriptURL}}', 'g');
+        let searchRegExp = new RegExp('{{scriptUrl}}', 'g');
         html = html.replace(searchRegExp, this.scriptUrl);
 
         searchRegExp = new RegExp('{{appName}}', 'g');
