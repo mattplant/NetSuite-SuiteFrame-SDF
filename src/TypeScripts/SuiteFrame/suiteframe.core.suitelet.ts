@@ -59,7 +59,7 @@
  * • Initial public release.
  *
  * 20220826 - Matt Plant
- * • Initial SuiteFrame TypeScript SDF Project Template version.
+ * • Initial NetSuite SuiteFrame SDF Project Template version.
  */
 
 import { EntryPoints } from 'N/types';
@@ -112,7 +112,7 @@ function postRequestHandle(context) {
 		details: context 
 	});
 
-	const requestPayload = context.request.body;
+	const requestPayload = JSON.parse(context.request.body);
 	context.response.setHeader('Content-Type', 'application/json');
 
 	if ((typeof requestPayload.function === 'undefined') || (requestPayload.function === null)) {

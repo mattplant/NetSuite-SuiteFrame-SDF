@@ -16,7 +16,7 @@
         "type": "git",
         "url": "https://github.com/mattplant/netsuite-suiteframe-sdf"
     },
-    "version": "0.7.0",
+    "version": "0.7.1",
     "license": "MIT",
     "devDependencies": {
         "@hitc/netsuite-types": "^2022.2.3",

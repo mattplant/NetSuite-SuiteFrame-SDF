@@ -38,7 +38,7 @@
 
 			<div class="appFooter">
 				{{appName}} v {{appVersion}}
-				&bull; Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a>.
+				&bull; {{appBuiltWith}}
 			</div>	
 		
 		</div>
@@ -78,7 +78,7 @@
 						<p class="card-text" style="margin-bottom: 3px;">
 						&bull; Supervisor: 
 							{{#if employee.supervisorid}}
-								<a href="{{scriptURL}}&employeeID={{employee.supervisorid}}">{{employee.supervisorname}}</a>
+								<a href="{{scriptUrl}}&employeeID={{employee.supervisorid}}">{{employee.supervisorname}}</a>
 							{{else}}
 								<span style="color: red;">None</span>
 							{{/if}}
@@ -213,10 +213,10 @@
 		<script id="rightNavTemplate" type="text/x-handlebars-template">
 			<div style="width: 100%; border: 0px solid #ccc; padding: 12px; margin-bottom: 12px; text-align: right;">						
 				<p>
-				<a href="{{scriptURL}}" class="btn btn-primary">Return to List</a>
+				<a href="{{scriptUrl}}" class="btn btn-primary">Return to List</a>
 				</p>
 				<p>
-				<a href="{{scriptURL}}&employeeID={{employee.id}}&json=T" target="_new" class="btn btn-outline-secondary btn-sm">View JSON</a>
+				<a href="{{scriptUrl}}&employeeID={{employee.id}}&json=T" target="_new" class="btn btn-outline-secondary btn-sm">View JSON</a>
 				</p>
 				<p>
 				<a href="/app/common/entity/employee.nl?id={{employee.id}}" target="_emp{{employee.id}}" class="btn btn-outline-secondary btn-sm">NetSuite View</a>
@@ -298,7 +298,7 @@
 					body: JSON.stringify( requestPayload )
 				}
 				
-				fetch( '{{scriptURL}}', options ).then( data =>
+				fetch( '{{scriptUrl}}', options ).then( data =>
 					{
 						if ( ! data.ok ) {
 							throw Error(data.status);

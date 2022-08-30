@@ -24,7 +24,7 @@ export class DetailView {
     const css = Library.fileLoad('suiteframe.css');
     html = Library.fileLoad('employee-directory.ui-detail-view.template.html');
 
-    let searchRegExp = new RegExp('{{scriptURL}}', 'g');
+    let searchRegExp = new RegExp('{{scriptUrl}}', 'g');
     html = html.replace(searchRegExp, this.scriptUrl);
 
     searchRegExp = new RegExp('{{appName}}', 'g');

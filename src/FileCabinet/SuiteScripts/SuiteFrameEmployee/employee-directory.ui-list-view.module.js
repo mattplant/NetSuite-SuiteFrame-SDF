@@ -33,7 +33,7 @@ define(["require", "exports", "N/ui/serverWidget", "./suiteframe.library.module.
                     const table = suiteframe_library_module_js_1.Library.recordsTableGenerate(records, tableID, true);
                     const css = suiteframe_library_module_js_1.Library.fileLoad('suiteframe.css');
                     html = suiteframe_library_module_js_1.Library.fileLoad('employee-directory.ui-list-view.template.html');
-                    let searchRegExp = new RegExp('{{scriptURL}}', 'g');
+                    let searchRegExp = new RegExp('{{scriptUrl}}', 'g');
                     html = html.replace(searchRegExp, this.scriptUrl);
                     searchRegExp = new RegExp('{{appName}}', 'g');
                     html = html.replace(searchRegExp, suiteframe_library_module_js_1.Library.appName);

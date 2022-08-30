@@ -17,7 +17,7 @@ define(["require", "exports", "N/record", "N/ui/serverWidget", "N/url", "./suite
             employee.logins = this.employeeLoginsGet(employeeID);
             const css = suiteframe_library_module_js_1.Library.fileLoad('suiteframe.css');
             html = suiteframe_library_module_js_1.Library.fileLoad('employee-directory.ui-detail-view.template.html');
-            let searchRegExp = new RegExp('{{scriptURL}}', 'g');
+            let searchRegExp = new RegExp('{{scriptUrl}}', 'g');
             html = html.replace(searchRegExp, this.scriptUrl);
             searchRegExp = new RegExp('{{appName}}', 'g');
             html = html.replace(searchRegExp, suiteframe_library_module_js_1.Library.appName);

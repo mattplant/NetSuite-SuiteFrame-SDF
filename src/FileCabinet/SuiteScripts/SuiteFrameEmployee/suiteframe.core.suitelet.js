@@ -59,7 +59,7 @@
  * • Initial public release.
  *
  * 20220826 - Matt Plant
- * • Initial SuiteFrame TypeScript SDF Project Template version.
+ * • Initial NetSuite SuiteFrame SDF Project Template version.
  */
 define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/url", "./employee-directory.ui-detail-view.module", "./employee-directory.ui-list-view.module"], function (require, exports, error, log, record, runtime, url, employee_directory_ui_detail_view_module_1, employee_directory_ui_list_view_module_1) {
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -103,7 +103,7 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
             title: 'postRequestHandle - context',
             details: context
         });
-        const requestPayload = context.request.body;
+        const requestPayload = JSON.parse(context.request.body);
         context.response.setHeader('Content-Type', 'application/json');
         if ((typeof requestPayload.function === 'undefined') || (requestPayload.function === null)) {
             context.response.write(JSON.stringify({
