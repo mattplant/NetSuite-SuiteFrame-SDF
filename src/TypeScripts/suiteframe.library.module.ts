@@ -4,7 +4,7 @@ import query = require('N/query');
 
 export class Library {
   static appName = 'NetSuite SuiteFrame SDF Project Template';
-  static appVersion = '0.7.1';
+  static appVersion = '0.7.2';
   static appBuiltWith = 'Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a> in <a href="https://github.com/mattplant/netsuite-typescript-sdf/" target="_blank">NetSuite TypeScript SDF Project Template</a>.';
   static hideNavBar = false;
   static enableDatatables = true;
