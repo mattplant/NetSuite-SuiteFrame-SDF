@@ -25,7 +25,7 @@
 	min-width: 400px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 	width: 100%;
-}			
+}
 
 .styled-table th,
 .styled-table td {
@@ -37,7 +37,7 @@
 	background-color: #607799;
 	color: #ffffff;
 	text-align: left;
-}			
+}
 
 .styled-table tbody tr {
 	border-bottom: thin solid #dddddd;
@@ -50,10 +50,8 @@
 .styled-table tbody tr.active-row {
 	font-weight: bold;
 	color: #009879;
-}	
+}
 
 .styled-table tbody tr:hover {
 	background-color: #ffff99;
-}			
-
-
+}

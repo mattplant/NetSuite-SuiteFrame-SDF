@@ -41,7 +41,11 @@ define(["require", "exports", "N/record", "N/ui/serverWidget", "N/url", "./suite
             }
             else {
                 const form = serverWidget.createForm({ title: 'Employee Details', hideNavBar: suiteframe_library_module_js_1.Library.hideNavBar });
-                const htmlField = form.addField({ id: 'custpage_field_html', type: serverWidget.FieldType.INLINEHTML, label: 'HTML' });
+                const htmlField = form.addField({
+                    id: 'custpage_field_html',
+                    type: serverWidget.FieldType.INLINEHTML,
+                    label: 'HTML',
+                });
                 htmlField.defaultValue = html;
                 context.response.writePage(form);
             }
@@ -60,7 +64,7 @@ define(["require", "exports", "N/record", "N/ui/serverWidget", "N/url", "./suite
 					Phone,
 					MobilePhone,
 					OfficePhone,
-					Email,			
+					Email,
 					HireDate,
 					BUILTIN.DF( Subsidiary ) AS Subsidiary,
 					Comments,
@@ -86,7 +90,7 @@ define(["require", "exports", "N/record", "N/ui/serverWidget", "N/url", "./suite
             }
             const sql = `SELECT URL FROM File WHERE ID = ${imageFileID}`;
             const files = suiteframe_library_module_js_1.Library.queryExecute(sql);
-            if ((files.length !== null) && (files.length === 1)) {
+            if (files.length !== null && files.length === 1) {
                 const imageFile = files[0];
                 const appURL = url.resolveDomain({ hostType: url.HostType.APPLICATION });
                 imageURL = `https://${appURL}${imageFile.url}`;
@@ -94,7 +98,7 @@ define(["require", "exports", "N/record", "N/ui/serverWidget", "N/url", "./suite
             return imageURL;
         }
         employeeLoginsGet(employeeID) {
-            const sql = `		
+            const sql = `
 				SELECT TOP 5
 					TO_CHAR( LoginAudit.Date, 'YYYY-MM-DD hh:mi:ss') AS DateTime,
 					LoginAudit.Status,
@@ -104,7 +108,7 @@ define(["require", "exports", "N/record", "N/ui/serverWidget", "N/url", "./suite
 				WHERE
 					( LoginAudit.User = ${employeeID} )
 				ORDER BY
-					LoginAudit.Date DESC		
+					LoginAudit.Date DESC
 			`;
             const logins = suiteframe_library_module_js_1.Library.queryExecute(sql);
             return logins;

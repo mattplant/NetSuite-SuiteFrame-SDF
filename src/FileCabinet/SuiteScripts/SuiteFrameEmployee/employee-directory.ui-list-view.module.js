@@ -8,7 +8,7 @@ define(["require", "exports", "N/ui/serverWidget", "./suiteframe.library.module.
         generate(context) {
             let html = 'List View';
             const sql = `
-				SELECT					
+				SELECT
 					'<a href="${this.scriptUrl}&employeeID=' || ID || '">Details</a>' AS Link,
 					LastName || ', ' || FirstName AS Name,
 					ID,
@@ -16,7 +16,7 @@ define(["require", "exports", "N/ui/serverWidget", "./suiteframe.library.module.
 					Title,
 					BUILTIN.DF( Supervisor ) AS Supervisor,
 					'<a href="tel:' || Phone || '">' || Phone || '</a>' AS Phone,
-					'<a href="mailto:' || Email || '">' || Email || '</a>' AS Email			
+					'<a href="mailto:' || Email || '">' || Email || '</a>' AS Email
 				FROM
 					Employee
 				ORDER BY
@@ -58,7 +58,11 @@ define(["require", "exports", "N/ui/serverWidget", "./suiteframe.library.module.
                 html = 'Error: An error occurred while executing the SuiteQL query.';
             }
             const form = serverWidget.createForm({ title: suiteframe_library_module_js_1.Library.appName, hideNavBar: suiteframe_library_module_js_1.Library.hideNavBar });
-            const htmlField = form.addField({ id: 'custpage_field_html', type: serverWidget.FieldType.INLINEHTML, label: 'HTML' });
+            const htmlField = form.addField({
+                id: 'custpage_field_html',
+                type: serverWidget.FieldType.INLINEHTML,
+                label: 'HTML',
+            });
             htmlField.defaultValue = html;
             context.response.writePage(form);
         }
