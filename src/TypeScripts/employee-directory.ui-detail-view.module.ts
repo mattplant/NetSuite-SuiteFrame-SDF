@@ -1,13 +1,10 @@
 import record = require('N/record');
-import serverWidget = require('N/ui/serverWidget')
+import serverWidget = require('N/ui/serverWidget');
 import url = require('N/url');
 import { Library } from './suiteframe.library.module.js';
 
 export class DetailView {
-  constructor(
-			private scriptUrl: string
-  ) {
-  }
+  constructor(private scriptUrl: string) {}
 
   public generate(context) {
     let html = 'Detail View';
@@ -55,7 +52,11 @@ export class DetailView {
       context.response.write(html);
     } else {
       const form = serverWidget.createForm({ title: 'Employee Details', hideNavBar: Library.hideNavBar });
-      const htmlField = form.addField({ id: 'custpage_field_html', type: serverWidget.FieldType.INLINEHTML, label: 'HTML' });
+      const htmlField = form.addField({
+        id: 'custpage_field_html',
+        type: serverWidget.FieldType.INLINEHTML,
+        label: 'HTML',
+      });
       htmlField.defaultValue = html;
       context.response.writePage(form);
     }
@@ -75,7 +76,7 @@ export class DetailView {
 					Phone,
 					MobilePhone,
 					OfficePhone,
-					Email,			
+					Email,
 					HireDate,
 					BUILTIN.DF( Subsidiary ) AS Subsidiary,
 					Comments,
@@ -106,7 +107,7 @@ export class DetailView {
 
     const sql = `SELECT URL FROM File WHERE ID = ${imageFileID}`;
     const files = Library.queryExecute(sql);
-    if ((files.length !== null) && (files.length === 1)) {
+    if (files.length !== null && files.length === 1) {
       const imageFile = files[0];
       const appURL = url.resolveDomain({ hostType: url.HostType.APPLICATION });
       imageURL = `https://${appURL}${imageFile.url}`;
@@ -116,7 +117,7 @@ export class DetailView {
   }
 
   private employeeLoginsGet(employeeID) {
-    const sql = `		
+    const sql = `
 				SELECT TOP 5
 					TO_CHAR( LoginAudit.Date, 'YYYY-MM-DD hh:mi:ss') AS DateTime,
 					LoginAudit.Status,
@@ -126,7 +127,7 @@ export class DetailView {
 				WHERE
 					( LoginAudit.User = ${employeeID} )
 				ORDER BY
-					LoginAudit.Date DESC		
+					LoginAudit.Date DESC
 			`;
     const logins = Library.queryExecute(sql);
 

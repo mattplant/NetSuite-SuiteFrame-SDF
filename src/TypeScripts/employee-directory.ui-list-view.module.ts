@@ -1,17 +1,14 @@
-import serverWidget = require('N/ui/serverWidget')
+import serverWidget = require('N/ui/serverWidget');
 import { Library } from './suiteframe.library.module.js';
 
 export class ListView {
-  constructor(
-			private scriptUrl: string
-  ) {
-  }
+  constructor(private scriptUrl: string) {}
 
   public generate(context) {
     let html = 'List View';
 
     const sql = `
-				SELECT					
+				SELECT
 					'<a href="${this.scriptUrl}&employeeID=' || ID || '">Details</a>' AS Link,
 					LastName || ', ' || FirstName AS Name,
 					ID,
@@ -19,7 +16,7 @@ export class ListView {
 					Title,
 					BUILTIN.DF( Supervisor ) AS Supervisor,
 					'<a href="tel:' || Phone || '">' || Phone || '</a>' AS Phone,
-					'<a href="mailto:' || Email || '">' || Email || '</a>' AS Email			
+					'<a href="mailto:' || Email || '">' || Email || '</a>' AS Email
 				FROM
 					Employee
 				ORDER BY
@@ -71,7 +68,11 @@ export class ListView {
     }
 
     const form = serverWidget.createForm({ title: Library.appName, hideNavBar: Library.hideNavBar });
-    const htmlField = form.addField({ id: 'custpage_field_html', type: serverWidget.FieldType.INLINEHTML, label: 'HTML' });
+    const htmlField = form.addField({
+      id: 'custpage_field_html',
+      type: serverWidget.FieldType.INLINEHTML,
+      label: 'HTML',
+    });
     htmlField.defaultValue = html;
     context.response.writePage(form);
   }

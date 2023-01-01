@@ -3,7 +3,9 @@ define(["require", "exports", "N/file", "N/log", "N/query"], function (require, 
     exports.Library = void 0;
     class Library {
         static fileLoad(fileName) {
-            const queryResults = query.runSuiteQL({ query: `SELECT ID FROM File WHERE Name = '${fileName}'` }).asMappedResults();
+            const queryResults = query
+                .runSuiteQL({ query: `SELECT ID FROM File WHERE Name = '${fileName}'` })
+                .asMappedResults();
             if (queryResults.length === 0) {
                 return '';
             }
@@ -13,14 +15,14 @@ define(["require", "exports", "N/file", "N/log", "N/query"], function (require, 
             return contents;
         }
         static recordsTableGenerate(records, tableID, excludeRowNumber) {
-            if ((records === null) || (records.length == 0)) {
+            if (records === null || records.length == 0) {
                 return '';
             }
             const columnNames = Object.keys(records[0]);
             let thead = '<thead class="thead-light">';
             thead += '<tr>';
             for (let i = 0; i < columnNames.length; i++) {
-                if ((excludeRowNumber) && (columnNames[i] == 'rownumber')) {
+                if (excludeRowNumber && columnNames[i] == 'rownumber') {
                     continue;
                 }
                 thead += `<th>${columnNames[i]}</th>`;
@@ -31,7 +33,7 @@ define(["require", "exports", "N/file", "N/log", "N/query"], function (require, 
             for (let r = 0; r < records.length; r++) {
                 tbody += '<tr>';
                 for (let i = 0; i < columnNames.length; i++) {
-                    if ((excludeRowNumber) && (columnNames[i] == 'rownumber')) {
+                    if (excludeRowNumber && columnNames[i] == 'rownumber') {
                         continue;
                     }
                     let value = records[r][columnNames[i]];

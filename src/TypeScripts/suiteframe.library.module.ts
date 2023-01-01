@@ -5,12 +5,15 @@ import query = require('N/query');
 export class Library {
   static appName = 'NetSuite SuiteFrame SDF Project Template';
   static appVersion = '0.7.2';
-  static appBuiltWith = 'Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a> in <a href="https://github.com/mattplant/netsuite-typescript-sdf/" target="_blank">NetSuite TypeScript SDF Project Template</a>.';
+  static appBuiltWith =
+    'Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a> in <a href="https://github.com/mattplant/netsuite-typescript-sdf/" target="_blank">NetSuite TypeScript SDF Project Template</a>.';
   static hideNavBar = false;
   static enableDatatables = true;
 
   static fileLoad(fileName: string) {
-    const queryResults = query.runSuiteQL({ query: `SELECT ID FROM File WHERE Name = '${fileName}'` }).asMappedResults();
+    const queryResults = query
+      .runSuiteQL({ query: `SELECT ID FROM File WHERE Name = '${fileName}'` })
+      .asMappedResults();
     if (queryResults.length === 0) {
       return '';
     }
@@ -22,14 +25,18 @@ export class Library {
   }
 
   static recordsTableGenerate(records, tableID, excludeRowNumber) {
-    if ((records === null) || (records.length == 0)) { return ''; }
+    if (records === null || records.length == 0) {
+      return '';
+    }
 
     const columnNames = Object.keys(records[0]);
 
     let thead = '<thead class="thead-light">';
     thead += '<tr>';
     for (let i = 0; i < columnNames.length; i++) {
-      if ((excludeRowNumber) && (columnNames[i] == 'rownumber')) { continue; }
+      if (excludeRowNumber && columnNames[i] == 'rownumber') {
+        continue;
+      }
       thead += `<th>${columnNames[i]}</th>`;
     }
     thead += '</tr>';
@@ -39,7 +46,9 @@ export class Library {
     for (let r = 0; r < records.length; r++) {
       tbody += '<tr>';
       for (let i = 0; i < columnNames.length; i++) {
-        if ((excludeRowNumber) && (columnNames[i] == 'rownumber')) { continue; }
+        if (excludeRowNumber && columnNames[i] == 'rownumber') {
+          continue;
+        }
         let value = records[r][columnNames[i]];
         if (value === null) {
           value = '';
@@ -60,10 +69,10 @@ export class Library {
     return html;
   }
 
-static queryExecute(sql: string) {
-  let records = [];
+  static queryExecute(sql: string) {
+    let records = [];
 
-  try {
+    try {
       let moreRecords = true;
       let paginatedRowBegin = 1;
       const paginatedRowEnd = 5000;
@@ -74,7 +83,9 @@ static queryExecute(sql: string) {
         const paginatedSQL = `SELECT * FROM ( SELECT ROWNUM AS ROWNUMBER, * FROM (${nestedSQL} ) ) WHERE ( ROWNUMBER BETWEEN ${paginatedRowBegin} AND ${paginatedRowEnd})`;
         const queryResults = query.runSuiteQL({ query: paginatedSQL, params: queryParams }).asMappedResults();
         records = records.concat(queryResults);
-        if (queryResults.length < 5000) { moreRecords = false; }
+        if (queryResults.length < 5000) {
+          moreRecords = false;
+        }
         paginatedRowBegin += 5000;
       } while (moreRecords);
     } catch (e) {

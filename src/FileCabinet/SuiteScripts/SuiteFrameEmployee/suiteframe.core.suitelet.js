@@ -67,7 +67,11 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
     let scriptUrl = '';
     function onRequest(context) {
         // make the script URL available to the UI modules
-        scriptUrl = url.resolveScript({ scriptId: runtime.getCurrentScript().id, deploymentId: runtime.getCurrentScript().deploymentId, returnExternalUrl: false });
+        scriptUrl = url.resolveScript({
+            scriptId: runtime.getCurrentScript().id,
+            deploymentId: runtime.getCurrentScript().deploymentId,
+            returnExternalUrl: false,
+        });
         try {
             // determine the request type
             if (context.request.method === 'GET') {
@@ -83,7 +87,7 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
             throw error.create({
                 name: e.name,
                 message: e.message,
-                notifyOff: true
+                notifyOff: true,
             });
         }
     }
@@ -101,13 +105,13 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
     function postRequestHandle(context) {
         log.debug({
             title: 'postRequestHandle - context',
-            details: context
+            details: context,
         });
         const requestPayload = JSON.parse(context.request.body);
         context.response.setHeader('Content-Type', 'application/json');
-        if ((typeof requestPayload.function === 'undefined') || (requestPayload.function === null)) {
+        if (typeof requestPayload.function === 'undefined' || requestPayload.function === null) {
             context.response.write(JSON.stringify({
-                error: 'No function was specified.'
+                error: 'No function was specified.',
             }));
             return;
         }
@@ -117,12 +121,14 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
                 break;
             default:
                 context.response.write(JSON.stringify({
-                    error: 'An unsupported function was specified.'
+                    error: 'An unsupported function was specified.',
                 }));
         }
     }
     function employeeNotesUpdate(context) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let requestPayload;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let responsePayload;
         try {
             requestPayload = JSON.parse(context.request.body);
@@ -130,15 +136,15 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
                 type: record.Type.EMPLOYEE,
                 id: requestPayload.employeeID,
                 values: {
-                    comments: requestPayload.comments
+                    comments: requestPayload.comments,
                 },
                 options: {
                     enableSourcing: false,
-                    ignoreMandatoryFields: true
-                }
+                    ignoreMandatoryFields: true,
+                },
             });
             responsePayload = {
-                status: 'success'
+                status: 'success',
             };
             log.debug('employeeNotesUpdate - responsePayload', responsePayload);
             context.response.write(JSON.stringify(responsePayload, null, 5));
@@ -146,10 +152,10 @@ define(["require", "exports", "N/error", "N/log", "N/record", "N/runtime", "N/ur
         catch (e) {
             log.error('Update Error', {
                 requestPayload,
-                error: e
+                error: e,
             });
             responsePayload = {
-                status: 'error'
+                status: 'error',
             };
         }
     }

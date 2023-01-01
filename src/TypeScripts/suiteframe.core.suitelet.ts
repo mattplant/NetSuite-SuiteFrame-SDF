@@ -75,94 +75,104 @@ import { ListView } from './employee-directory.ui-list-view.module';
 let scriptUrl = '';
 
 export function onRequest(context: EntryPoints.Suitelet.onRequestContext) {
-	// make the script URL available to the UI modules
-	scriptUrl = url.resolveScript({ scriptId: runtime.getCurrentScript().id, deploymentId: runtime.getCurrentScript().deploymentId, returnExternalUrl: false });
+  // make the script URL available to the UI modules
+  scriptUrl = url.resolveScript({
+    scriptId: runtime.getCurrentScript().id,
+    deploymentId: runtime.getCurrentScript().deploymentId,
+    returnExternalUrl: false,
+  });
 
-	try {
-		// determine the request type
-		if (context.request.method === 'GET') {
-			// process the GET request
-			getRequestHandle(context);
-		} else {
-			// process the POST request
-			postRequestHandle(context);
-		}
-	} catch (e) {
-		throw error.create({
-			name: e.name,
-			message: e.message,
-			notifyOff: true 
-		});
-	}
+  try {
+    // determine the request type
+    if (context.request.method === 'GET') {
+      // process the GET request
+      getRequestHandle(context);
+    } else {
+      // process the POST request
+      postRequestHandle(context);
+    }
+  } catch (e) {
+    throw error.create({
+      name: e.name,
+      message: e.message,
+      notifyOff: true,
+    });
+  }
 }
 
 function getRequestHandle(context) {
-	if (typeof context.request.parameters.employeeID === 'undefined') {
-		const listView = new ListView(scriptUrl);
-		listView.generate(context);
-	} else {
-		const detailView = new DetailView(scriptUrl);
-		detailView.generate(context);
-	}
+  if (typeof context.request.parameters.employeeID === 'undefined') {
+    const listView = new ListView(scriptUrl);
+    listView.generate(context);
+  } else {
+    const detailView = new DetailView(scriptUrl);
+    detailView.generate(context);
+  }
 }
 
 function postRequestHandle(context) {
-	log.debug({
-		title: 'postRequestHandle - context',
-		details: context 
-	});
+  log.debug({
+    title: 'postRequestHandle - context',
+    details: context,
+  });
 
-	const requestPayload = JSON.parse(context.request.body);
-	context.response.setHeader('Content-Type', 'application/json');
+  const requestPayload = JSON.parse(context.request.body);
+  context.response.setHeader('Content-Type', 'application/json');
 
-	if ((typeof requestPayload.function === 'undefined') || (requestPayload.function === null)) {
-		context.response.write(JSON.stringify({
-			error: 'No function was specified.' 
-		}));
-		return;
-	}
+  if (typeof requestPayload.function === 'undefined' || requestPayload.function === null) {
+    context.response.write(
+      JSON.stringify({
+        error: 'No function was specified.',
+      })
+    );
+    return;
+  }
 
-	switch (requestPayload.function) {
-	case 'employeeNotesUpdate':
-		employeeNotesUpdate(context);
-		break;
+  switch (requestPayload.function) {
+    case 'employeeNotesUpdate':
+      employeeNotesUpdate(context);
+      break;
 
-	default:
-		context.response.write(JSON.stringify({
-			error: 'An unsupported function was specified.' 
-		}));
-	}
+    default:
+      context.response.write(
+        JSON.stringify({
+          error: 'An unsupported function was specified.',
+        })
+      );
+  }
 }
 
 function employeeNotesUpdate(context) {
-	let requestPayload: any;
-	let responsePayload: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let requestPayload: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let responsePayload: any;
 
-	try {
-		requestPayload = JSON.parse(context.request.body);
-		record.submitFields({
-			type: record.Type.EMPLOYEE,
-			id: requestPayload.employeeID,
-			values: {
-				comments: requestPayload.comments
-			},
-			options: {
-				enableSourcing: false,
-				ignoreMandatoryFields: true
-			}
-		});
-		responsePayload = {
-			status: 'success' 
-		};
-		log.debug('employeeNotesUpdate - responsePayload', responsePayload);
-		context.response.write(JSON.stringify(responsePayload, null, 5));
-	} catch (e) {
-		log.error('Update Error', {
-			requestPayload,
-			error: e 
-		});
-		responsePayload = {
-			status: 'error' 
-		};
-	}
+  try {
+    requestPayload = JSON.parse(context.request.body);
+    record.submitFields({
+      type: record.Type.EMPLOYEE,
+      id: requestPayload.employeeID,
+      values: {
+        comments: requestPayload.comments,
+      },
+      options: {
+        enableSourcing: false,
+        ignoreMandatoryFields: true,
+      },
+    });
+    responsePayload = {
+      status: 'success',
+    };
+    log.debug('employeeNotesUpdate - responsePayload', responsePayload);
+    context.response.write(JSON.stringify(responsePayload, null, 5));
+  } catch (e) {
+    log.error('Update Error', {
+      requestPayload,
+      error: e,
+    });
+    responsePayload = {
+      status: 'error',
+    };
+  }
 }
