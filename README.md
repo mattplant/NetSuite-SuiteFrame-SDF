@@ -8,12 +8,11 @@ This project template aids in building modern NetSuite-native solutions by lever
 
 High level steps to get started with this project template:
 
-1. Clone this repository
-2. Run `npm install` to install the project dependencies
-3. Deploy SDF Project to NetSuite
-4. Click on the "URL" link from the deployed SuiteFrame Suitelet deployment record to open the SuiteFrame application in a new browser tab
+1. Clone this repository and install dependencies with `git clone https://github.com/mattplant/NetSuite-SuiteFrame-SDF && cd NetSuite-SuiteFrame-SDF && npm install`
+2. Deploy SDF Project to NetSuite
+3. Click on the "URL" link from the deployed SuiteFrame Suitelet deployment record to open the SuiteFrame application in a new browser tab
 
-See the [NetSuite TypeScript SDF project template](https://github.com/mattplant/NetSuite-TypeScript-SDF) for more detailed information.
+See the [NetSuite TypeScript SDF](https://github.com/mattplant/NetSuite-TypeScript-SDF) project template for more detailed information.
 
 ## Customization
 
