@@ -3,10 +3,10 @@ import log = require('N/log');
 import query = require('N/query');
 
 export class Library {
-  static appName = 'NetSuite SuiteFrame SDF Project Template';
-  static appVersion = '0.7.2';
+  static appName = 'SuiteFrame';
+  static appVersion = '0.8.1';
   static appBuiltWith =
-    'Built with <a href="https://timdietrich.me/blog/netsuite-suiteframe/" target="_tim">SuiteFrame</a> in <a href="https://github.com/mattplant/netsuite-typescript-sdf/" target="_blank">NetSuite TypeScript SDF Project Template</a>.';
+    'Built with the <a href="https://github.com/mattplant/NetSuite-TypeScript-SDF" target="_blank">NetSuite TypeScript SDF</a> project template.';
   static hideNavBar = false;
   static enableDatatables = true;
 
